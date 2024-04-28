@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ReviewController = require('../controllers/reviewController');
+const ReviewController = require('../controller/review');
 
 // Create a new review
 router.post('/', ReviewController.createReview);

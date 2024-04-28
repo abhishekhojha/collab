@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const CodeSnippetController = require('../controllers/codeSnippetController');
+const CodeSnippetController = require('../controller/codesnippet');
 
 // Create a new code snippet
 router.post('/', CodeSnippetController.createCodeSnippet);
