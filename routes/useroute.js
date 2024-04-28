@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const UserController = require('../controller/user');
-
+router.use(jwtAuthMiddleware)
 // Create a new user
 router.post('/', function(req, res){UserController.createUser});
 
