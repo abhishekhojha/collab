@@ -3,7 +3,7 @@ let Review = require("../models/Review.js")
 // Create a new review
 async function createReview(req, res) {
   try {
-    const review = await Review.create(req.body);
+    const review = await Review.createReview(req.body);
     res.status(201).json(review);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -13,7 +13,7 @@ async function createReview(req, res) {
 // Get review by ID
 async function getReviewById(req, res) {
   try {
-    const review = await Review.findById(req.params.reviewId);
+    const review = await Review.getReviewById(req.params.reviewId);
     if (!review) {
       return res.status(404).json({ message: 'Review not found' });
     }
@@ -26,7 +26,7 @@ async function getReviewById(req, res) {
 // Update review by ID
 async function updateReviewById(req, res) {
   try {
-    const review = await Review.findByIdAndUpdate(req.params.reviewId, req.body, { new: true });
+    const review = await Review.updateReviewById(req.params.reviewId, req.body, { new: true });
     if (!review) {
       return res.status(404).json({ message: 'Review not found' });
     }
@@ -39,7 +39,7 @@ async function updateReviewById(req, res) {
 // Delete review by ID
 async function deleteReviewById(req, res) {
   try {
-    const review = await Review.findByIdAndDelete(req.params.reviewId);
+    const review = await Review.deleteReviewById(req.params.reviewId);
     if (!review) {
       return res.status(404).json({ message: 'Review not found' });
     }

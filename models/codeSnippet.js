@@ -15,6 +15,7 @@ module.exports = CodeSnippet;
 // Create a new code snippet
 async function createCodeSnippet(codeSnippetData) {
   try {
+    console.log(codeSnippetData)
     const codeSnippet = await CodeSnippet.create(codeSnippetData);
     return codeSnippet;
   } catch (error) {

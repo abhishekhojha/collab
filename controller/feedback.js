@@ -3,7 +3,7 @@ const Feedback = require('../models/feedback');
 // Create new feedback
 async function createFeedback(req, res) {
   try {
-    const feedback = await Feedback.create(req.body);
+    const feedback = await Feedback.createFeedback(req.body);
     res.status(201).json(feedback);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -13,7 +13,7 @@ async function createFeedback(req, res) {
 // Get feedback by ID
 async function getFeedbackById(req, res) {
   try {
-    const feedback = await Feedback.findById(req.params.feedbackId);
+    const feedback = await Feedback.getFeedbackById(req.params.feedbackId);
     if (!feedback) {
       return res.status(404).json({ message: 'Feedback not found' });
     }
@@ -26,7 +26,7 @@ async function getFeedbackById(req, res) {
 // Update feedback by ID
 async function updateFeedbackById(req, res) {
   try {
-    const feedback = await Feedback.findByIdAndUpdate(req.params.feedbackId, req.body, { new: true });
+    const feedback = await Feedback.updateFeedbackById(req.params.feedbackId, req.body, { new: true });
     if (!feedback) {
       return res.status(404).json({ message: 'Feedback not found' });
     }
@@ -39,7 +39,7 @@ async function updateFeedbackById(req, res) {
 // Delete feedback by ID
 async function deleteFeedbackById(req, res) {
   try {
-    const feedback = await Feedback.findByIdAndDelete(req.params.feedbackId);
+    const feedback = await Feedback.deleteFeedbackById(req.params.feedbackId);
     if (!feedback) {
       return res.status(404).json({ message: 'Feedback not found' });
     }
