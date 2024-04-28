@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('./userSchema');
 const dotenv = require("dotenv")
+const express = require("express")
 dotenv.config()
 const router = express.Router();
 const SECRET_KEY = process.env.JWT_SECRET_KEY; 

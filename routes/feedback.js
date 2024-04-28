@@ -3,15 +3,15 @@ const router = express.Router();
 const FeedbackController = require('../controller/feedback');
 
 // Create new feedback
-router.post('/', FeedbackController.createFeedback);
+router.post('/', function(req, res){FeedbackController.createFeedback});
 
 // Get feedback by ID
-router.get('/:feedbackId', FeedbackController.getFeedbackById);
+router.get('/:feedbackId', function(req, res){FeedbackController.getFeedbackById});
 
 // Update feedback by ID
-router.put('/:feedbackId', FeedbackController.updateFeedbackById);
+router.put('/:feedbackId', function(req, res){FeedbackController.updateFeedbackById});
 
 // Delete feedback by ID
-router.delete('/:feedbackId', FeedbackController.deleteFeedbackById);
+router.delete('/:feedbackId', function(req, res){FeedbackController.deleteFeedbackById});
 
 module.exports = router;
