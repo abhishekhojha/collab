@@ -3,8 +3,13 @@ const router = express.Router();
 const CodeSnippetController = require('../controller/codesnippet');
 const jwtAuthMiddleware = require("../auth/JWT")
 router.use(jwtAuthMiddleware)
+router.use(express.json());
+
 // Create a new code snippet
-router.post('/', function(req, res){CodeSnippetController.createCodeSnippet});
+router.post('/', function(req, res){
+    // return res.status(201).json("codeSnippet");
+    CodeSnippetController.createCodeSnippet(req, res)
+});
 
 // Get code snippet by ID
 router.get('/:snippetId', function(req, res){CodeSnippetController.getCodeSnippetById});

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const FeedbackController = require('../controller/feedback');
+const jwtAuthMiddleware = require("../auth/JWT")
 router.use(jwtAuthMiddleware)
 // Create new feedback
 router.post('/', function (req, res) { FeedbackController.createFeedback });

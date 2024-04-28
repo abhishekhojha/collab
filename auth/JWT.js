@@ -7,6 +7,7 @@ const router = express.Router();
 const SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 const jwtAuthMiddleware = async (req, res, next) => {
+    console.log(req.headers)
     const authHeader = req.headers['authorization'];
     if (!authHeader) {
         return res.status(401).json({ message: 'Unauthorized' });
@@ -22,7 +23,6 @@ const jwtAuthMiddleware = async (req, res, next) => {
         }
 
         req.user = user;
-
         next();
     } catch (error) {
         console.error(error);

@@ -8,6 +8,7 @@ const dotenv = require("dotenv")
 dotenv.config()
 const router = express.Router();
 const SECRET_KEY = process.env.JWT_SECRET_KEY; 
+router.use(express.json());
 
 router.post(
   '/signup',
@@ -17,6 +18,7 @@ router.post(
     body('password').notEmpty().trim().isLength({ min: 6 }),
   ],
   async (req, res) => {
+    console.log(req) 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });

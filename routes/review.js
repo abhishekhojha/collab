@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ReviewController = require('../controller/review');
+const jwtAuthMiddleware = require("../auth/JWT")
 router.use(jwtAuthMiddleware)
 // Create a new review
 router.post('/', function (req, res) { ReviewController.createReview });
